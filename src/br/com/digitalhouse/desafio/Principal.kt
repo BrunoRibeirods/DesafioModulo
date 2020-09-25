@@ -2,52 +2,44 @@ package br.com.digitalhouse.desafio
 
 class Principal {
     fun main(){
-        val professorTitular = ProfessorTitular(
-            "Vitoria",
-            "Gonçalves",
-            0,
-            1001,
-            "Kotlin"
-        )
-        val professorAdjunto = ProfessorAdjunto(
-            "Bruno",
-            "Ribeiro",
-            0,
-            1002,
-            5
-        )
-        val aluno1 = Aluno("Ederson", "America", 1)
-        val aluno2 = Aluno("Bruce", "Wayne", 2)
-        val aluno3 = Aluno("Barry", "Allen", 3)
+        val digitalHouseManager = DigitalHouseManager()
 
-        val listaAlunos = mutableListOf<Aluno>()
-        val listaProfessores = mutableListOf<Professor>()
-        val listaCursos = mutableListOf<Curso>()
-        val listaMatricula = mutableListOf<Matricula>()
+        //registrando professores titulares
+        digitalHouseManager.registrarProfessorTitular("Clark", "Kent", 100, "JavaScript")
+        digitalHouseManager.registrarProfessorTitular("Bruce", "Wayne", 101, "Kotlin")
 
-        val curso1 = Curso(
-            "Full Stack",
-            20001,
-            professorTitular,
-            professorAdjunto,
-            3,
-            listaAlunos
-        )
 
-        val curso2 = Curso(
-            "Android",
-            20002,
-            professorTitular,
-            professorAdjunto,
-            2,
-            listaAlunos
-        )
+        //registrando professores adjuntos
+        digitalHouseManager.registrarProfessorAdjunto("Barry", "Allen", 200, 2)
+        digitalHouseManager.registrarProfessorAdjunto("Bart", "Simpson", 203, 5)
 
-        val digitalHouseManager = DigitalHouseManager(listaAlunos, listaProfessores, listaCursos, listaMatricula)
+        //registrando cursos
+        digitalHouseManager.registrarCurso("Full Stack", 20001, 3)
+        digitalHouseManager.registrarCurso("Android", 20002, 2)
 
-        digitalHouseManager.registrarCurso(curso1)
-        digitalHouseManager.registrarCurso(curso2)
+        //alocando professores
+        digitalHouseManager.alocarProfessores(20001, 100, 200)
+        digitalHouseManager.alocarProfessores(20002, 101, 201)
 
-        
+        //registrando alunos
+        digitalHouseManager.registrarAluno("Bruno", "Ribeiro", 1)
+        digitalHouseManager.registrarAluno("Tony", "Stark", 2)
+        digitalHouseManager.registrarAluno("Mulher", "Maravilha", 3)
+        digitalHouseManager.registrarAluno("Feiticeira", "Escarlate", 4)
+        digitalHouseManager.registrarAluno("Steve", "Rogers", 5)
+
+        //matriculando alunos
+        digitalHouseManager.matricularAluno(1, 20001)
+        digitalHouseManager.matricularAluno(2, 20001)
+        digitalHouseManager.matricularAluno(3, 20002)
+        digitalHouseManager.matricularAluno(4, 20002)
+        digitalHouseManager.matricularAluno(5, 20002)
+
+
+        //caso o aluno queira consultar
+        digitalHouseManager.consultarCurso(2)
+
+
+
     }
 }

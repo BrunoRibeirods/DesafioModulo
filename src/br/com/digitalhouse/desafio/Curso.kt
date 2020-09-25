@@ -1,20 +1,27 @@
 package br.com.digitalhouse.desafio
 
-class Curso(val nome: String, val codigoCurso: Int, val professorTitular: ProfessorTitular?,
-            val professorAdjunto: ProfessorAdjunto?, val quantidadeMaxima: Int,
-            val listaDeMatriculados: MutableList<Aluno>) {
+class Curso(val nome: String, val codigoCurso: Int, var professorTitular: ProfessorTitular?,
+            var professorAdjunto: ProfessorAdjunto?, val quantidadeMaxima: Int,
+            val listaDeMatriculados: MutableList<Aluno> = mutableListOf()) {
 
     init {
-        val result = listaDeMatriculados.size < quantidadeMaxima
-        println("Numero maximo de alunos: $quantidadeMaxima, lista de matriculados -> ${listaDeMatriculados.size}, Resultado -> $result")
+        if (listaDeMatriculados.size == quantidadeMaxima){
+            println("Aula lotada!")
+        }
     }
 
     fun adicionarUmAluno(umAluno: Aluno): Boolean{
-        return if (listaDeMatriculados.size > quantidadeMaxima){
-            false
-        }else {
+        if (listaDeMatriculados.contains(umAluno)){
+            println("Aluno já cadastrado.")
+            return false
+        }
+        if (listaDeMatriculados.size >= quantidadeMaxima){
+            println("Não foi possivel matricular pois a quantidade de alunos foi ultrapassada.")
+            return false
+        }else{
+            println("Aluno Matriculado com sucesso curso de: $nome")
             listaDeMatriculados.add(umAluno)
-            true
+            return true
         }
     }
 
