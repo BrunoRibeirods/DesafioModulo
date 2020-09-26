@@ -38,6 +38,7 @@ class Principal {
 
         //caso o aluno queira consultar
         digitalHouseManager.consultarCurso(2)
+        digitalHouseManager.consultarCurso(4)
 
 
 

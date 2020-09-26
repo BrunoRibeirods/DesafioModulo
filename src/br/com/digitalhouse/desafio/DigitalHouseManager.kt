@@ -1,5 +1,7 @@
 package br.com.digitalhouse.desafio
 
+import java.time.LocalDateTime
+
 
 class DigitalHouseManager(val listaAlunos: MutableList<Aluno> = mutableListOf(), val listaProfessores: MutableMap<Int, Professor> = mutableMapOf(),
                           val listaCursos: MutableList<Curso> = mutableListOf(), val listaMatricula: MutableList<Matricula> = mutableListOf()){
@@ -70,7 +72,7 @@ class DigitalHouseManager(val listaAlunos: MutableList<Aluno> = mutableListOf(),
         for(aluno in listaAlunos){
             for(curso in listaCursos){
                 if(aluno.codigo == codigoAluno && curso.codigoCurso == codigoCurso) {
-                    listaMatricula.add(Matricula(aluno, curso, 0))
+                    listaMatricula.add(Matricula(aluno, curso))
                     return
                 }
             }
